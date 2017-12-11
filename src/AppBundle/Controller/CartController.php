@@ -33,14 +33,14 @@ class CartController extends Controller
     public function deleteAction(SessionInterface $session, Request $request, $id)
     {
         $cart = $session->get('cart');
-        unset($cart[$id-1]);
+        unset($cart[$id]);
         $session->set('cart', $cart);
         return $this->redirectToRoute("cart.show");        
     }
     /**
      * @Route("/show", name="cart.show")
      */
-    public function showAction(SessionInterface $session, Request $request)
+    public function showAction(SessionInterface $session)
     {
         $cart = $session->get('cart');
         return $this->render(

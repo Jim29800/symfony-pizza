@@ -1,0 +1,30 @@
+{% extends 'layout/layout.html.twig' %}
+{% block body %}
+    <h2>
+        Historique des commandes de :
+        {{ app.user.username }}
+    </h2>
+    <div>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Prix</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in list %}
+                    <tr>
+                        <td class="col-xs-3">{{ item.product.title }}</td>
+                        <td class="col-xs-4">{{ item.product.description }}</td>
+                        <td class="col-xs-2">{{ item.product.price }}</td>
+                        <td class="col-xs-2">{{ item.createdAt|date("d/m/Y") }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

@@ -1,9 +1,14 @@
 {% extends 'layout/layout.html.twig' %}
 {% block body %}
-    <p>
+    <h2>
         Panier de :
         {{ app.user.username }}
-    </p>
+    </h2>
+{% for message in app.flashes('note') %}
+    <div class="flash-notice">
+        <h2>{{ message }}</h2>
+    </div>
+{% endfor %}
 <div>
     <table class="table table-bordered table-striped table-hover">
         <thead>
@@ -14,13 +19,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in list %}
+            {% for key,item in list %}
                 <tr>
                     <td class="col-xs-3">{{ item.title }}</td>
                     <td class="col-xs-4">{{ item.description }}</td>
                     <td class="col-xs-2">{{ item.price }}</td>
                     <td class="text-center col-xs-1">
-                        <a href="/cart/delete/{{ loop.index }}">
+                        <a href="/cart/delete/{{ key }}">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         </a>
                     </td>
@@ -29,5 +34,8 @@
             {% endfor %}
         </tbody>
     </table>
+
+<a href="/command/valid"><button class="btn btn-success">Passer la commande</button></a>
+
 </div>
 {% endblock %}

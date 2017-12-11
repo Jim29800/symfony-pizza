@@ -22,7 +22,7 @@ class RecipeController extends Controller
     {
         {
             $list_stock = $this->getDoctrine()->getRepository("AppBundle:Stock")->findAll();
-            $list = $this->getDoctrine()->getRepository("AppBundle:Recipe")->findByProduct($id);;
+            $list = $this->getDoctrine()->getRepository("AppBundle:Recipe")->findByProduct($id);
             $product = $this->getDoctrine()->getRepository("AppBundle:Product")->find($id);
             $recipe = new Recipe();
 
