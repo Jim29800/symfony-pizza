@@ -34,7 +34,12 @@ class Recipe
      * @ORM\JoinColumn(name="id_stock", referencedColumnName="id")
      */
     private $stock;
-
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="amount", type="integer")
+     */
+    private $amount;
 
     /**
      * Get id
@@ -92,6 +97,30 @@ class Recipe
     public function getStock()
     {
         return $this->stock;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     *
+     * @return Recipe
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return int
+     */
+    public function getAmount()
+    {
+        return $this->amount;
     }
 }
 

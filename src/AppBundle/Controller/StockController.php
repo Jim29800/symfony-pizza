@@ -36,7 +36,7 @@ class StockController extends Controller
             return $this->redirectToRoute("stock.list");
         }
 
-        return $this->render("stockList.html.twig", [
+        return $this->render("stock/stockList.html.twig", [
             "list" => $list,
             "form" => $form->createView(),
             ]);
@@ -61,7 +61,7 @@ class StockController extends Controller
                 return $this->redirectToRoute("stock.list");
             }
 
-            return $this->render("stockEdit.html.twig", [
+            return $this->render("stock/stockEdit.html.twig", [
                 "form" => $form->createView(),
             ]);
         }

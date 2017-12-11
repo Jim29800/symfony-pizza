@@ -1,0 +1,42 @@
+{% extends 'layout/layout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+<h1>Gestion de la recette</h1>
+<h2>Liste des ingrédients</h2>
+<div>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr><th>Titre</th><th>Nombre</th></tr>
+        </thead>
+        <tbody>
+            {% for item in list %}
+            <tr>
+                <td>{{ item.stock.title }}</td>
+                <td>{{ item.amount }}</td>
+                <td class="text-center col-xs-1"><a href="/recipe/delete/{{ idProduit }}/{{ item.id }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<h2>Ajouter un ingredient</h2>
+<div>
+{{ form_start(form) }}
+<div class="col-xs-4">
+    {{ form_label(form.stock) }}
+    {{ form_widget(form.stock)}}
+</div>
+<div class="col-xs-4">
+    {{ form_label(form.amount) }}
+    {{ form_widget(form.amount)}}
+</div>
+<div class="col-xs-4">
+    <br>
+    {{ form_widget(form.save,{'attr': {'class': 'btn btn-success'}}
+    )}}
+</div>
+
+{{ form_end(form) }}
+    
+</div>
+{% endblock %}
