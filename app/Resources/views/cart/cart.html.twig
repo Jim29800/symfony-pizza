@@ -1,0 +1,33 @@
+{% extends 'layout/layout.html.twig' %}
+{% block body %}
+    <p>
+        Panier de :
+        {{ app.user.username }}
+    </p>
+<div>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in list %}
+                <tr>
+                    <td class="col-xs-3">{{ item.title }}</td>
+                    <td class="col-xs-4">{{ item.description }}</td>
+                    <td class="col-xs-2">{{ item.price }}</td>
+                    <td class="text-center col-xs-1">
+                        <a href="/cart/delete/{{ loop.index }}">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

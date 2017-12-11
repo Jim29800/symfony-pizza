@@ -65,4 +65,15 @@ class ProductController extends Controller
             ]);
         }
     }
+    /**
+     * @Route("/card", name="card")
+     */
+    public function cardAction()
+    {
+        $list = $this->getDoctrine()->getRepository("AppBundle:Product")->findAll();
+
+        return $this->render("product/productCard.html.twig", [
+            "list" => $list,
+        ]);
+    }
 }
