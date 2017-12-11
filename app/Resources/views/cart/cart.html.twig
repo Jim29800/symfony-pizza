@@ -1,14 +1,22 @@
 {% extends 'layout/layout.html.twig' %}
 {% block body %}
-    <h2>
-        Panier de :
-        {{ app.user.username }}
-    </h2>
 {% for message in app.flashes('note') %}
     <div class="flash-notice">
         <h2>{{ message }}</h2>
     </div>
 {% endfor %}
+{% if list is empty %}
+<h2>
+    Le panier de
+    {{ app.user.username }}
+    est vide.
+</h2>
+{% else %}
+<h2>
+    Le panier de 
+    {{ app.user.username }} contient :
+</h2>
+
 <div>
     <table class="table table-bordered table-striped table-hover">
         <thead>
@@ -38,4 +46,6 @@
 <a href="/command/valid"><button class="btn btn-success">Passer la commande</button></a>
 
 </div>
+
+{% endif %}
 {% endblock %}
