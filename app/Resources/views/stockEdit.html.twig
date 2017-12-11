@@ -1,0 +1,24 @@
+{% extends 'layout/layout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+<h1>Gestion des stocks</h1>
+<h2>Modification d'un ingredient</h2>
+<div>
+    {{ form_start(form) }}  
+    <div class="col-xs-4">
+        {{ form_label(form.title) }}    
+        {{ form_widget(form.title)}}
+    </div>
+    <div class="col-xs-4">
+        {{ form_label(form.amount) }}        
+        {{ form_widget(form.amount)}}
+    </div>
+    <div class="col-xs-4">
+        <br>
+        {{ form_widget(form.save,{'attr': {'class': 'btn btn-success'}} )}}
+    </div>
+    
+    {{ form_end(form) }}
+    
+</div>
+{% endblock %}

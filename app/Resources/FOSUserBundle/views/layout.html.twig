@@ -1,0 +1,12 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% if form is defined %}
+    {% form_theme form 'form/bootstrap_3_layout.html.twig' %}
+{% endif %}
+
+
+{% block body %}
+    {% block content %}
+        {% block fos_user_content %}{% endblock %}
+    {% endblock %}
+{% endblock %}
