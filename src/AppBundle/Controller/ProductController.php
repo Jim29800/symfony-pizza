@@ -5,6 +5,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\Recipe;
+
 use AppBundle\Form\ProductType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -70,10 +72,22 @@ class ProductController extends Controller
      */
     public function cardAction()
     {
-        $list = $this->getDoctrine()->getRepository("AppBundle:Product")->findAll();
+        $list_product = $this->getDoctrine()->getRepository("AppBundle:Product")->findAll();
+        $list_recipe = $this->getDoctrine()->getRepository("AppBundle:Recipe")->findAll();
+        
+        //verifie la disponibilité via les ingredients
+        foreach ($list_recipe as $value) {
+            if ($value->getStock()->getAmount() < $value->getAmount()) {
+                    foreach ($list_product as $key => $value2) {
+                        if ($value->getProduct() == $value2) {
+                            unset($list_product[$key]);
+                        }
+                    }
+            }
+        }
 
         return $this->render("product/productCard.html.twig", [
-            "list" => $list,
+            "list" => $list_product,
         ]);
     }
 }
