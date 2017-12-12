@@ -11,7 +11,13 @@
     {% if app.user %}
         {% include 'layout/navbar.html.twig' %}
     {% else %}
-        <h2 class="text-center">Merci de vous identifiez pour avoir accès au site.</h2><br>
+        <h2 class="text-center">Merci de vous connecter pour avoir accès au site.</h2><br>
+        <div class="text-center">
+            <a href="/register" class="text-center">INSCRIPTION</a> / 
+            <a href="/login" class="text-center">CONNEXION</a><br>
+</div><br>
+        
+        
     {% endif %}
     
     <section class="container">

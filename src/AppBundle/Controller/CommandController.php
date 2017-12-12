@@ -37,17 +37,17 @@ class CommandController extends Controller
                 $em->merge($command);
 
                 //decompte des ingredients
-                $list_recipe = $this->getDoctrine()->getRepository("AppBundle:Recipe")->findByProduct($value);
-                $list_stock = $this->getDoctrine()->getRepository("AppBundle:Stock")->findAll();
+                // $list_recipe = $this->getDoctrine()->getRepository("AppBundle:Recipe")->findByProduct($value);
+                // $list_stock = $this->getDoctrine()->getRepository("AppBundle:Stock")->findAll();
 
-                    foreach ($list_recipe as $value1) {
-                        foreach ($list_stock as $key => $value2) {
-                            if ($value1->getStock() == $value2) {
-                                $list_stock[$key]->setAmount($list_stock[$key]->getAmount() - $value1->getAmount()); 
-                                $em->persist($list_stock[$key]);
-                            }
-                        }
-                    }
+                //     foreach ($list_recipe as $value1) {
+                //         foreach ($list_stock as $key => $value2) {
+                //             if ($value1->getStock() == $value2) {
+                //                 $list_stock[$key]->setAmount($list_stock[$key]->getAmount() - $value1->getAmount()); 
+                //                 $em->persist($list_stock[$key]);
+                //             }
+                //         }
+                //     }
 
                 $em->flush();
                 $this->addFlash(
